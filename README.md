@@ -1,3 +1,5 @@
-# Uni9-2026-1-CP1
+## Uni9-2026-1-CP1
 
-Criação de tarefa
+# Colaboradores
+Gabriel Ferreira de Lima - RA: 924112094
+Roger Henrique Alves Campos - RA: 924100757
