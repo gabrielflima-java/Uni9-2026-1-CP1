@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Consultas Veterinárias | Petshop Aumição</title>
+
+<style>
+
+body{
+font-family: Arial, Helvetica, sans-serif;
+margin:0;
+background:#fafafa;
+color:#333;
+}
+
+/* HEADER */
+
+header{
+background:#d4af37;
+color:white;
+text-align:center;
+padding:25px;
+}
+
+header h1{
+margin:0;
+font-size:36px;
+}
+
+/* BANNER */
+
+.banner{
+background:url('https://images.unsplash.com/photo-1583511655857-d19b40a7a54e');
+background-size:cover;
+background-position:center;
+height:300px;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+text-shadow:2px 2px 5px black;
+}
+
+.banner h2{
+font-size:40px;
+background:rgba(0,0,0,0.4);
+padding:15px 30px;
+border-radius:10px;
+}
+
+/* CONTAINER */
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:40px 20px;
+}
+
+/* SERVIÇOS */
+
+.servicos{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:12px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.card h3{
+color:#d4af37;
+}
+
+/* TABELA */
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+th, td{
+padding:15px;
+border-bottom:1px solid #ddd;
+text-align:center;
+}
+
+th{
+background:#d4af37;
+color:white;
+}
+
+/* BOTÃO */
+
+.agendar{
+display:block;
+width:220px;
+margin:40px auto;
+padding:15px;
+text-align:center;
+background:#d4af37;
+color:white;
+font-size:18px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+.agendar:hover{
+background:#b8962e;
+}
+
+/* ORIENTAÇÕES */
+
+.orientacoes{
+background:#fff;
+padding:30px;
+margin-top:40px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* FOOTER */
+
+footer{
+background:#333;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:40px;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: rgb(5, 0, 0);
+    font-weight: bold;
+}
+
+</style>
+<nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="banho-e-tosa.html">banho e tosa</a></li>
+                <li><a href="hotel.html">Hotel</a></li>
+            </ul>
+        </nav>
+</head>
+
+<body>
+
+<header>
+<h1>Petshop Aumição</h1>
+<p>Consultas Veterinarias</p>
+</header>
+
+<div class="banner">
+</div>
+
+<div class="container">
+
+<h2>Atendimento Veterinário</h2>
+
+<p>
+No Petshop Aumição oferecemos consultas veterinárias para garantir a saúde,
+bem-estar e qualidade de vida do seu pet. Nossos profissionais são preparados
+para realizar avaliações completas e orientar os tutores sobre os melhores
+cuidados para seus animais.
+</p>
+
+<div class="servicos">
+
+<div class="card">
+    <h3>Consulta Clínica</h3>
+    <p>Avaliação geral da saúde do pet e diagnóstico de possíveis problemas.</p>
+</div>
+
+<div class="card">
+    <h3>Vacinação</h3>
+    <p>Aplicação de vacinas essenciais para proteção contra doenças.</p>
+</div>
+
+<div class="card">
+<h3>Acompanhamento</h3>
+<p>Monitoramento da saúde do animal com consultas periódicas.</p>
+</div>
+
+<div class="card">
+    <h3>Orientação Nutricional</h3>
+    <p>Indicação de alimentação adequada para cada fase da vida do pet.</p>
+</div>
+
+</div>
+
+<button class="agendar" onclick="agendar()">Agendar Consulta</button>
+
+<div class="orientacoes">
+
+<h2>Orientações para a consulta</h2>
+
+<ul>
+    <li>Trazer a carteira de vacinação do pet.</li>
+    <li>Informar qualquer sintoma observado.</li>
+    <li>Levar o pet com guia ou caixa de transporte.</li>
+    <li>Chegar com 10 minutos de antecedência.</li>
+</ul>
+
+</div>
+
+</div>
+
+<footer id="contato">
+        <p>© 2026 Petshop Aumição - Todos os direitos reservados</p>
+        <p>Endereço: Rua das Flores, 123 - São Paulo/SP</p>
+        <p>Telefone: (11) 98765-4321</p>
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hotel para Cachorros | Petshop Aumição</title>
+
+<style>
+
+body{
+font-family: Arial, Helvetica, sans-serif;
+margin:0;
+background:#fafafa;
+color:#333;
+}
+
+/* HEADER */
+
+header{
+background:#d4af37;
+color:white;
+text-align:center;
+padding:25px;
+}
+
+header h1{
+margin:0;
+font-size:36px;
+}
+
+/* BANNER */
+
+.banner{
+background:url('https://images.unsplash.com/photo-1558788353-f76d92427f16');
+background-size:cover;
+background-position:center;
+height:300px;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+text-shadow:2px 2px 5px black;
+}
+
+.banner h2{
+font-size:40px;
+background:rgba(0,0,0,0.4);
+padding:15px 30px;
+border-radius:10px;
+}
+
+/* CONTAINER */
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:40px 20px;
+}
+
+/* SERVIÇOS */
+
+.servicos{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:12px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.card h3{
+color:#d4af37;
+}
+
+/* TABELA */
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+th, td{
+padding:15px;
+border-bottom:1px solid #ddd;
+text-align:center;
+}
+
+th{
+background:#d4af37;
+color:white;
+}
+
+/* BOTÃO */
+
+.reservar{
+display:block;
+width:220px;
+margin:40px auto;
+padding:15px;
+text-align:center;
+background:#d4af37;
+color:white;
+font-size:18px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+.reservar:hover{
+background:#b8962e;
+}
+
+/* REGRAS */
+
+.regras{
+background:#fff;
+padding:30px;
+margin-top:40px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+footer{
+background:#333;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:40px;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: rgb(5, 0, 0);
+    font-weight: bold;
+}
+</style>
+
+</head>
+
+<body>
+<nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="consultas.html">Consultas</a></li>
+                <li><a href="banho-e-tosa.html">banho e tosa</a></li>
+            </ul>
+        </nav>
+<header>
+    <h1>Petshop Aumição</h1>
+        <p>Hotel que fornece conforto e segurança para seu melhor amigo</p>
+</header>
+
+<div class="banner">
+</div>
+
+<div class="container">
+
+<h2>Hospedagem para seu Pet</h2>
+
+<p>
+    Vai viajar ou precisa se ausentar? No Hotel do Petshop Aumição seu cachorro
+    fica em um ambiente seguro, confortável e cheio de carinho. Nossa equipe
+    cuida de cada hóspede com atenção especial para que ele se sinta em casa.
+</p>
+
+<div class="servicos">
+
+<div class="card">
+    <h3>Acomodação Confortável</h3>
+        <p>Espaços limpos, climatizados e seguros para descanso do seu pet.</p>
+</div>
+
+<div class="card">
+    <h3>Recreação Diária</h3>
+        <p>Momentos de brincadeiras e socialização supervisionados.</p>
+</div>
+
+<div class="card">
+    <h3>Alimentação</h3>
+        <p>Seguimos a rotina alimentar indicada pelo tutor.</p>
+</div>
+
+<div class="card">
+    <h3>Monitoramento</h3>
+        <p>Acompanhamento constante para garantir segurança e bem-estar.</p>
+</div>
+
+</div>
+
+<button class="reservar" onclick="reservar()">Reservar hospedagem</button>
+
+<div class="regras">
+
+<h2>Regras para hospedagem</h2>
+
+<ul>
+    <li>O pet deve estar com as vacinas em dia.</li>
+    <li>É obrigatório apresentar carteira de vacinação.</li>
+    <li>Trazer ração habitual do pet.</li>
+    <li>Informar qualquer necessidade especial do animal.</li>
+    <li>Pets agressivos ou doentes não poderão ser hospedados.</li>
+</ul>
+
+</div>
+
+</div>
+
+<footer id="contato">
+         <p>© 2026 Petshop Aumição - Todos os direitos reservados</p>
+        <p>Endereço: Rua das Flores, 123 - São Paulo/SP</p>
+        <p>Telefone: (11) 98765-4321</p>
+</footer>
+
+</body>
+</html>
