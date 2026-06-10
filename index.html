@@ -1,45 +1,322 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetShop Aumicão</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Consulta de CEP</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f8;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .container {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+      padding: 40px;
+      width: 100%;
+      max-width: 520px;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1a202c;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      color: #718096;
+      margin-bottom: 28px;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    input#cep {
+      flex: 1;
+      padding: 12px 16px;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 1rem;
+      color: #2d3748;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input#cep:focus {
+      border-color: #4f46e5;
+    }
+
+    input#cep::placeholder {
+      color: #a0aec0;
+    }
+
+    button#buscar {
+      padding: 12px 20px;
+      background: #4f46e5;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      white-space: nowrap;
+    }
+
+    button#buscar:hover {
+      background: #4338ca;
+    }
+
+    button#buscar:active {
+      transform: scale(0.97);
+    }
+
+    button#buscar:disabled {
+      background: #a5b4fc;
+      cursor: not-allowed;
+    }
+
+    #loading {
+      display: none;
+      text-align: center;
+      padding: 20px 0;
+      color: #718096;
+      font-size: 0.9rem;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      border: 3px solid #e2e8f0;
+      border-top-color: #4f46e5;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    #resultado {
+      display: none;
+    }
+
+    .resultado-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid #f0f4f8;
+    }
+
+    .resultado-header .badge {
+      background: #ebf4ff;
+      color: #3b82f6;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.05em;
+    }
+
+    .resultado-header .cep-display {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1a202c;
+      font-family: monospace;
+      letter-spacing: 0.05em;
+    }
+
+    .dados-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .dado-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .dado-item.full {
+      grid-column: 1 / -1;
+    }
+
+    .dado-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #a0aec0;
+    }
+
+    .dado-valor {
+      font-size: 0.95rem;
+      color: #2d3748;
+      font-weight: 500;
+    }
+
+    .dado-valor.vazio {
+      color: #cbd5e0;
+      font-style: italic;
+    }
+
+    #erro {
+      display: none;
+      background: #fff5f5;
+      border: 1px solid #fed7d7;
+      border-radius: 8px;
+      padding: 14px 16px;
+      color: #c53030;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="consultas.html">Consultas</a></li>
-                <li><a href="banho-e-tosa.html">banho e tosa</a></li>
-                <li><a href="hotel.html">Hotel</a></li>
-            </ul>
-        </nav>
-    </header>
-    <section id="home" class="banner">
-        <img src="banho-e-tosa.jpg" alt="Foto do PetShop Aumicão">
-        <h1>Bem-vindo ao PetShop Aumicão!</h1>
-    </section>
-    <section id="servicos">
-        <h2>Nossos Serviços</h2>
-        <div class="servico">
-            <h3>Banho e Tosa</h3>
-            <p>Cuidados especiais para deixar seu pet limpo e estiloso.</p>
+
+  <div class="container">
+    <h1>Consulta de CEP</h1>
+    <p class="subtitle">Digite um CEP para buscar o endereço completo.</p>
+
+    <div class="input-group">
+      <input type="text" id="cep" placeholder="00000-000" maxlength="9" />
+      <button id="buscar">Pesquisar</button>
+    </div>
+
+    <div id="loading">
+      <span class="spinner"></span> Buscando endereço...
+    </div>
+
+    <div id="erro"></div>
+
+    <div id="resultado">
+      <div class="resultado-header">
+        <span class="badge">CEP</span>
+        <span class="cep-display" id="res-cep"></span>
+      </div>
+      <div class="dados-grid">
+        <div class="dado-item full">
+          <span class="dado-label">Logradouro</span>
+          <span class="dado-valor" id="res-logradouro"></span>
         </div>
-        <div class="servico">
-            <h3>Consultas Veterinárias</h3>
-            <p>Atendimento profissional para garantir a saúde do seu animal.</p>
+        <div class="dado-item">
+          <span class="dado-label">Complemento</span>
+          <span class="dado-valor" id="res-complemento"></span>
         </div>
-        <div class="servico">
-            <h3>Hotelzinho</h3>
-            <p>Um espaço seguro e confortável para seu pet quando você viajar.</p>
+        <div class="dado-item">
+          <span class="dado-label">Bairro</span>
+          <span class="dado-valor" id="res-bairro"></span>
         </div>
-    </section>
-    <footer id="contato">
-        <p>Endereço: Rua das Flores, 123 - São Paulo/SP</p>
-        <p>Telefone: (11) 98765-4321</p>
-    </footer>
+        <div class="dado-item">
+          <span class="dado-label">Cidade</span>
+          <span class="dado-valor" id="res-localidade"></span>
+        </div>
+        <div class="dado-item">
+          <span class="dado-label">Estado</span>
+          <span class="dado-valor" id="res-uf"></span>
+        </div>
+        <div class="dado-item">
+          <span class="dado-label">IBGE</span>
+          <span class="dado-valor" id="res-ibge"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Formata o campo enquanto o usuário digita (00000-000)
+    $('#cep').on('input', function () {
+      let val = $(this).val().replace(/\D/g, '');
+      if (val.length > 5) val = val.slice(0, 5) + '-' + val.slice(5, 8);
+      $(this).val(val);
+    });
+
+    // Dispara pesquisa ao pressionar Enter
+    $('#cep').on('keypress', function (e) {
+      if (e.key === 'Enter') $('#buscar').trigger('click');
+    });
+
+    $('#buscar').on('click', function () {
+      const cepRaw = $('#cep').val().replace(/\D/g, '');
+
+      // Validação básica
+      if (cepRaw.length !== 8) {
+        mostrarErro('Por favor, informe um CEP válido com 8 dígitos.');
+        return;
+      }
+
+      // Reseta estado
+      $('#resultado').hide();
+      $('#erro').hide();
+      $('#loading').show();
+      $('#buscar').prop('disabled', true);
+
+      // Requisição AJAX para a API ViaCEP
+      $.ajax({
+        url: `https://viacep.com.br/ws/${cepRaw}/json/`,
+        method: 'GET',
+        dataType: 'json',
+        success: function (data) {
+          $('#loading').hide();
+          $('#buscar').prop('disabled', false);
+
+          if (data.erro) {
+            mostrarErro('CEP não encontrado. Verifique o número e tente novamente.');
+            return;
+          }
+
+          renderizarResultado(data);
+        },
+        error: function () {
+          $('#loading').hide();
+          $('#buscar').prop('disabled', false);
+          mostrarErro('Não foi possível conectar à API. Verifique sua conexão e tente novamente.');
+        }
+      });
+    });
+
+    function renderizarResultado(data) {
+      const vazio = '<span class="vazio">—</span>';
+
+      $('#res-cep').text(data.cep || '');
+      $('#res-logradouro').html(data.logradouro || vazio);
+      $('#res-complemento').html(data.complemento || vazio);
+      $('#res-bairro').html(data.bairro || vazio);
+      $('#res-localidade').html(data.localidade || vazio);
+      $('#res-uf').html(data.uf || vazio);
+      $('#res-ibge').html(data.ibge || vazio);
+
+      $('#resultado').fadeIn(300);
+    }
+
+    function mostrarErro(msg) {
+      $('#erro').text(msg).fadeIn(200);
+    }
+  </script>
+
 </body>
 </html>
-
